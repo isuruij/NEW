@@ -11,7 +11,6 @@ AWS.config.update({ region: 'eu-north-1' });
 const cognito = new AWS.CognitoIdentityServiceProvider();
 const dynamoDB = new AWS.DynamoDB.DocumentClient();
 const CLIENT_ID = '5u8pmrkti2j5hsntkm5srtkb3v';
-const USER_POOL_ID = 'eu-north-1_SBN2he5bz'; 
 const TABLE_NAME = 'Users'; 
 
 app.post('/signup', async (req, res) => {
@@ -91,21 +90,7 @@ app.post('/login', async (req, res) => {
   }
 });
 
-// app.post('/resend-confirmation', async (req, res) => {
-//   const { username } = req.body;
 
-//   try {
-//     const params = {
-//       ClientId: CLIENT_ID,
-//       Username: username,
-//     };
-
-//     const data = await cognito.resendConfirmationCode(params).promise();
-//     res.json(data);
-//   } catch (error) {
-//     res.status(400).json({ error: error.message });
-//   }
-// });
 
 app.get('/getuser/:username', async (req, res) => {
     const { username } = req.params;
